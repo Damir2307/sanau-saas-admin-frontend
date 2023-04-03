@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  sanau-saas-admin-frontend-internal:
+    container_name: sanau-saas-admin-frontend-internal
+    build:
+      context: .
+      dockerfile: .docker/reactjs/Dockerfile
+      args:
+        REACT_APP_API_BASE_URL: http://10.0.10.27:9085
+        REACT_APP_NETWORK_SERVER_BASE_URL: http://10.0.10.30:8080/#/login
+    dns:
+      - 4.4.4.4
+      - 8.8.8.8
+    ports:
+      - '40001:80'
